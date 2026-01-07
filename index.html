@@ -1,0 +1,1491 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Riaz Jugon — Animated CV</title>
+  <meta name="description" content="Animated CV for Riaz Jugon — TV &amp; Digital Producer" />
+  <style>
+    :root {
+      --bg0:#0b1020;
+      --bg1:#0f1a3a;
+      --card: rgba(255,255,255,.06);
+      --chip: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --line: rgba(255,255,255,.14);
+      --accent:#78d6ff;
+      --accent2:#b57bff;
+      --accent3:#68f0c6;
+      --shadow: 0 18px 70px rgba(0,0,0,.45);
+      --radius: 20px;
+      --radius2: 28px;
+      --maxw: 1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background: radial-gradient(1100px 600px at 12% 10%, rgba(120,214,255,.22), transparent 52%),
+                  radial-gradient(900px 520px at 86% 18%, rgba(181,123,255,.18), transparent 55%),
+                  radial-gradient(800px 500px at 55% 92%, rgba(104,240,198,.12), transparent 60%),
+                  linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    .grain {
+      pointer-events:none;
+      position:fixed; inset:-40%;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)' opacity='.20'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      opacity:.18;
+      animation: drift 12s linear infinite;
+      transform: translate3d(0,0,0);
+    }
+    @keyframes drift {
+      0%{ transform: translate3d(-2%, -2%, 0) rotate(0deg); }
+      50%{ transform: translate3d(2%, 1%, 0) rotate(4deg); }
+      100%{ transform: translate3d(-2%, -2%, 0) rotate(0deg); }
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 28px 18px 90px;
+    }
+
+    header {
+      position: relative;
+      padding: 26px 22px;
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    header::before {
+      content:"";
+      position:absolute; inset:-120px;
+      background: radial-gradient(420px 300px at 18% 22%, rgba(120,214,255,.22), transparent 60%),
+                  radial-gradient(420px 300px at 82% 22%, rgba(181,123,255,.18), transparent 60%),
+                  radial-gradient(520px 360px at 50% 120%, rgba(104,240,198,.16), transparent 60%);
+      filter: blur(2px);
+      animation: float 8s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translate3d(0,0,0) scale(1); }
+      50% { transform: translate3d(0,-10px,0) scale(1.02); }
+    }
+    header > * { position:relative; z-index:1; }
+
+    .top {
+      display:flex; gap:16px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .id { min-width: 260px; }
+    h1 {
+      margin:0;
+      font-size: clamp(30px, 3.3vw, 44px);
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+    }
+    .role {
+      margin-top: 8px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .links {
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      align-items:center;
+    }
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 700;
+      font-size: 13px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      will-change: transform;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.22);
+    }
+    .btn svg { width:16px; height:16px; opacity:.9; }
+
+    .grid {
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+    }
+    @media (max-width: 920px) {
+      .grid { grid-template-columns: 1fr; }
+      .links { justify-content:flex-start; }
+    }
+
+    .card {
+      border:1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.22);
+      backdrop-filter: blur(10px);
+    }
+    .card h2 {
+      margin:0 0 10px;
+      font-size: 14px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.78);
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14.5px;
+    }
+    .tags {
+      margin-top: 10px;
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .tag {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.78);
+    }
+
+    .section {
+      margin-top: 18px;
+    }
+    .sectionhead {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin: 18px 0 10px;
+      flex-wrap:wrap;
+    }
+    .sectionhead h2 {
+      margin:0;
+      font-size: 16px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+    }
+
+    .search {
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .search input {
+      width: min(620px, 100%);
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      padding: 10px 14px;
+      color: var(--text);
+      outline:none;
+      font-size: 14px;
+    }
+    .search input:focus {
+      border-color: rgba(120,214,255,.55);
+      box-shadow: 0 0 0 3px rgba(120,214,255,.16);
+    }
+    .hint {
+      font-size: 12.5px;
+      color: rgba(255,255,255,.55);
+      font-family: var(--mono);
+    }
+
+    .tabs {
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 12px 12px;
+    }
+    .tabs h3 {
+      margin: 0 0 8px;
+      font-size: 12px;
+      letter-spacing:.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.70);
+    }
+    .tabrow {
+      display:flex;
+      gap:8px;
+      overflow-x:auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+    }
+    .tabrow::-webkit-scrollbar { height: 8px; }
+    .tabrow::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 999px; }
+
+    .tab {
+      flex: 0 0 auto;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.82);
+      font-weight: 800;
+      font-size: 12.5px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+      white-space: nowrap;
+    }
+    .tab:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.22);
+    }
+    .tab.active {
+      border-color: rgba(120,214,255,.60);
+      box-shadow: 0 0 0 3px rgba(120,214,255,.14);
+    }
+    .tab.alt.active {
+      border-color: rgba(181,123,255,.65);
+      box-shadow: 0 0 0 3px rgba(181,123,255,.14);
+    }
+    .tab.ter.active {
+      border-color: rgba(104,240,198,.65);
+      box-shadow: 0 0 0 3px rgba(104,240,198,.14);
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 12px;
+      padding-left: 22px;
+    }
+    .timeline::before {
+      content:"";
+      position:absolute;
+      left: 10px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(120,214,255,.55), rgba(181,123,255,.45), rgba(104,240,198,.35));
+      border-radius: 2px;
+      opacity:.8;
+    }
+
+    .jobcard {
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      margin: 12px 0;
+      overflow:hidden;
+      box-shadow: 0 10px 34px rgba(0,0,0,.18);
+    }
+    .jobhead {
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding: 14px 14px 10px 14px;
+    }
+    .node {
+      flex:0 0 auto;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 35% 35%, var(--accent), var(--accent2));
+      margin-top: 3px;
+      box-shadow: 0 0 0 4px rgba(120,214,255,.10);
+      position: relative;
+      left: -20px;
+    }
+    .jobtitle {
+      font-weight: 900;
+      letter-spacing: -.01em;
+      line-height: 1.2;
+      font-size: 15px;
+    }
+    .meta {
+      color: rgba(255,255,255,.64);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .chips {
+      margin-top: 8px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .chip {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.78);
+    }
+    .chip.role {
+      border-color: rgba(120,214,255,.22);
+    }
+    .chip.genre {
+      border-color: rgba(181,123,255,.20);
+    }
+    .jobbody {
+      padding: 0 14px 14px 14px;
+      color: rgba(255,255,255,.74);
+      font-size: 14.2px;
+      line-height: 1.55;
+    }
+    .jobbody ul { margin: 10px 0 0 18px; padding:0; }
+    .jobbody li { margin: 6px 0; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .subtle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: rgba(255,255,255,.55);
+      font-size: 12.5px;
+      text-align:center;
+    }
+    .mini { font-family: var(--mono); opacity:.9; }
+
+    @media (max-width: 520px) {
+      .jobtitle { font-size: 14.5px; }
+      .jobbody { font-size: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+
+  <div class="wrap">
+    <header class="reveal">
+      <div class="top">
+        <div class="id">
+          <h1>Riaz Jugon</h1>
+          <div class="role">
+            <strong>TV &amp; Digital Producer</strong><br/>
+            Shooting Producer / DV Director / Video Editor / Content Strategist / Broadcast Journalist (BJTC accredited)
+          </div>
+        </div>
+
+        <div class="links">
+          <a class="btn" href="https://www.thetalentmanager.com/talent/48244/riaz-jugon" target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M21 14v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            TalentManager
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/riaz-j-01384a26/" target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 9.5V20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6.5 6.5h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M10.5 20v-6.2c0-1.9 1.1-3.3 3-3.3s3 1.4 3 3.3V20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10.5 13.2V9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card reveal">
+          <h2>Profile</h2>
+          <p>
+            TV + digital producer with major UK broadcast, news and streamer credits.
+            Strong in shooting + edit, social-first packaging, editorial standards, compliance, and fast-turnaround storytelling across YouTube, TikTok, Reels and broadcast.
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <h2>Skills</h2>
+          <p>Searchable skills for recruiters and ATS.</p>
+          <div class="tags">
+            <span class="tag">Adobe Premiere Pro</span>
+            <span class="tag">After Effects</span>
+            <span class="tag">Photoshop</span>
+            <span class="tag">Wildmoka</span>
+            <span class="tag">Content Management Systems (CMS)</span>
+            <span class="tag">YouTube Studio</span>
+            <span class="tag">SEO metadata</span>
+            <span class="tag">Thumbnail packaging</span>
+            <span class="tag">Captions / subtitling</span>
+            <span class="tag">Short-form (TikTok / Reels / Shorts)</span>
+            <span class="tag">Long-form YouTube</span>
+            <span class="tag">UGC verification & clearance</span>
+            <span class="tag">Rights / legal / editorial compliance</span>
+            <span class="tag">Content strategy</span>
+            <span class="tag">Platform QA</span>
+            <span class="tag">Google Sheets</span>
+            <span class="tag">ENPS</span>
+            <span class="tag">Sound (multi-mic)</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="sectionhead">
+        <h2>Career History</h2>
+        <div class="search">
+          <input id="q" type="search" placeholder="Search across titles, roles, genres, bullets… (press / to focus)" aria-label="Search roles" />
+          <span class="hint">/ to focus • esc to clear</span>
+        </div>
+      </div>
+
+      <div class="tabs reveal">
+        <h3>Role</h3>
+        <div class="tabrow" id="roleTabs"></div>
+      </div>
+
+      <div class="tabs reveal" style="margin-top:12px;">
+        <h3>Genre</h3>
+        <div class="tabrow" id="genreTabs"></div>
+      </div>
+
+      <div class="timeline" id="timeline">
+        
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor edit-producer"
+      data-genre="news sports social-media"
+      data-text="News UK (TalkTV, talkSPORT and The Sun) Social Media Producer / Content Strategist Apr 2023 – Present Owned day-to-day content intake, curation and publishing across YouTube and social, ensuring assets were consistently packaged, searchable and reusable. Managed metadata standards at scale: platform-specific titles, descriptions, captions, summaries and thumbnail packaging to improve clarity, findability and performance. Delivered version control through multi-format outputs (Shorts/Reels/TikTok/YouTube clips), maintaining clear naming and consistent formatting across variants. Ran QA checks pre-publish across devices/platforms: captions, pacing, formatting, link/description accuracy and brand/editorial standards. Operated within strict compliance processes — ensuring outputs met legal, editorial and rights requirements before publication. Cleared and curated UGC and agency footage, maintaining controlled usage and accurate attribution. Managed weekend publishing independently, prioritising intake, packaging and publishing at pace while maintaining accuracy and standards. Built simple performance snapshots using YouTube Studio analytics and Google Sheets, feeding learnings back into packaging decisions. Maintained a structured weekend performance log in CRM, ensuring TalkTV teams had a consistent record of content performance, actions taken, and optimisation notes to support continuous improvement. digital-producer video-editor edit-producer news sports social-media">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">News UK (TalkTV, talkSPORT and The Sun) — Social Media Producer / Content Strategist</div>
+          <div class="meta">Apr 2023 – Present</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">News</span><span class="chip genre">Sports</span><span class="chip genre">Social Media</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Owned day-to-day content intake, curation and publishing across YouTube and social, ensuring assets were consistently packaged, searchable and reusable.</li><li>Managed metadata standards at scale: platform-specific titles, descriptions, captions, summaries and thumbnail packaging to improve clarity, findability and performance.</li><li>Delivered version control through multi-format outputs (Shorts/Reels/TikTok/YouTube clips), maintaining clear naming and consistent formatting across variants.</li><li>Ran QA checks pre-publish across devices/platforms: captions, pacing, formatting, link/description accuracy and brand/editorial standards.</li><li>Operated within strict compliance processes — ensuring outputs met legal, editorial and rights requirements before publication.</li><li>Cleared and curated UGC and agency footage, maintaining controlled usage and accurate attribution.</li><li>Managed weekend publishing independently, prioritising intake, packaging and publishing at pace while maintaining accuracy and standards.</li><li>Built simple performance snapshots using YouTube Studio analytics and Google Sheets, feeding learnings back into packaging decisions.</li><li>Maintained a structured weekend performance log in CRM, ensuring TalkTV teams had a consistent record of content performance, actions taken, and optimisation notes to support continuous improvement.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor edit-producer"
+      data-genre="news social-media"
+      data-text="Yahoo News UK Digital Producer / Video Editor Mar 2025 – Dec 2025 Produced TikTok and YouTube news explainers for an audience of 1M+, applying consistent standards for scripts, visuals, captions and formatting. Used analytics + SEO metadata to optimise discovery and retention; tracked performance in Google Sheets to refine approach. digital-producer video-editor edit-producer news social-media">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Yahoo News UK — Digital Producer / Video Editor</div>
+          <div class="meta">Mar 2025 – Dec 2025</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">News</span><span class="chip genre">Social Media</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Produced TikTok and YouTube news explainers for an audience of 1M+, applying consistent standards for scripts, visuals, captions and formatting.</li><li>Used analytics + SEO metadata to optimise discovery and retention; tracked performance in Google Sheets to refine approach.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="dv-director"
+      data-genre="reality factual-entertainment"
+      data-text="Handcuffed With Jonathan Ross (Channel 4 / 72 Films) DV Director Jun – Jul 2025 Embedded competition series, following contestants 24/7 as they compete for a £100K cash prize. Shooting alongside PD, filming GVs and producing story notes for the edit. Recording sound — using mixers and covering four mics simultaneously. dv-director reality factual-entertainment">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Handcuffed With Jonathan Ross (Channel 4 / 72 Films) — DV Director</div>
+          <div class="meta">Jun – Jul 2025</div>
+          <div class="chips">
+            <span class="chip role">DV Director</span>
+            <span class="chip genre">Reality</span><span class="chip genre">Factual Entertainment</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Embedded competition series, following contestants 24/7 as they compete for a £100K cash prize.</li><li>Shooting alongside PD, filming GVs and producing story notes for the edit.</li><li>Recording sound — using mixers and covering four mics simultaneously.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="shooting-pd edit-producer"
+      data-genre="consumer daytime factual-entertainment"
+      data-text="Rip Off Britain (BBC Studios) Shooting PD Apr – May 2025; Oct – Dec 2021; Feb – Apr 2022 Scripting and shooting consumer complaint films with contributors and talent — produced 20 VTs over two series. Leading master interviews and directing actuality sequences and recon, guiding researcher on second camera. Managing talent, crew and contributors on shoot and overseeing logistics such as risk assessments. shooting-pd edit-producer consumer daytime factual-entertainment">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Rip Off Britain (BBC Studios) — Shooting PD</div>
+          <div class="meta">Apr – May 2025; Oct – Dec 2021; Feb – Apr 2022</div>
+          <div class="chips">
+            <span class="chip role">Shooting PD</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">Consumer</span><span class="chip genre">Daytime</span><span class="chip genre">Factual Entertainment</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Scripting and shooting consumer complaint films with contributors and talent — produced 20 VTs over two series.</li><li>Leading master interviews and directing actuality sequences and recon, guiding researcher on second camera.</li><li>Managing talent, crew and contributors on shoot and overseeing logistics such as risk assessments.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor"
+      data-genre="sports social-media"
+      data-text="The Athletic (Totally Football Show) Digital Producer / Video Editor Jan 2023 – Jul 2024 Managed live YouTube output and reactive clipping with graphics/captions and platform-ready versions. Used audience signals to guide clip selection and improve packaging/distribution. digital-producer video-editor sports social-media">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">The Athletic (Totally Football Show) — Digital Producer / Video Editor</div>
+          <div class="meta">Jan 2023 – Jul 2024</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span>
+            <span class="chip genre">Sports</span><span class="chip genre">Social Media</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Managed live YouTube output and reactive clipping with graphics/captions and platform-ready versions.</li><li>Used audience signals to guide clip selection and improve packaging/distribution.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="dv-director"
+      data-genre="reality"
+      data-text="Married At First Sight (Channel 4 / CPL) DV Director Jan – Feb 2024 Shooting master interviews with contestants, recording sound, set decoration and lighting. Assisting with master interview questions during master interviews and during actuality sequences. Directing and developing story through actuality scenes with contestants. dv-director reality">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Married At First Sight (Channel 4 / CPL) — DV Director</div>
+          <div class="meta">Jan – Feb 2024</div>
+          <div class="chips">
+            <span class="chip role">DV Director</span>
+            <span class="chip genre">Reality</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Shooting master interviews with contestants, recording sound, set decoration and lighting.</li><li>Assisting with master interview questions during master interviews and during actuality sequences.</li><li>Directing and developing story through actuality scenes with contestants.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="dv-director"
+      data-genre="factual-entertainment documentary"
+      data-text="The Repair Shop (BBC One) DV Director Jul – Nov 2023 Shooting creative sequences on repairs of items going through transformation over several weeks. Filming interviews with contributors and talent throughout the repair process. Leading on story development of items through directing interviews with talent. dv-director factual-entertainment documentary">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">The Repair Shop (BBC One) — DV Director</div>
+          <div class="meta">Jul – Nov 2023</div>
+          <div class="chips">
+            <span class="chip role">DV Director</span>
+            <span class="chip genre">Factual Entertainment</span><span class="chip genre">Documentary</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Shooting creative sequences on repairs of items going through transformation over several weeks.</li><li>Filming interviews with contributors and talent throughout the repair process.</li><li>Leading on story development of items through directing interviews with talent.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor"
+      data-genre="daytime social-media news"
+      data-text="Jeremy Vine On 5 (ITN, Channel 5) Social Media Producer Jun – Jul 2023 Built social interactivity (polls/comments for live show) and clipped best moments for social platforms. Shot TikTok videos of presenter to promote show and topics to drive engagement. digital-producer video-editor daytime social-media news">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Jeremy Vine On 5 (ITN, Channel 5) — Social Media Producer</div>
+          <div class="meta">Jun – Jul 2023</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span>
+            <span class="chip genre">Daytime</span><span class="chip genre">Social Media</span><span class="chip genre">News</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Built social interactivity (polls/comments for live show) and clipped best moments for social platforms.</li><li>Shot TikTok videos of presenter to promote show and topics to drive engagement.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="shooting-pd edit-producer"
+      data-genre="daytime factual-entertainment"
+      data-text="RHS Chelsea Flower Show (BBC Studios) Shooting PD Apr – May 2022; Apr – May 2023 Scripting and shooting VTs for live show for event exhibitors, showcasing their work — produced six films. Managing crew and logistics for shoots, including risk assessments. Leading PSC to produce on-the-day VTs during the live broadcast — produced eight films in four days. shooting-pd edit-producer daytime factual-entertainment">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">RHS Chelsea Flower Show (BBC Studios) — Shooting PD</div>
+          <div class="meta">Apr – May 2022; Apr – May 2023</div>
+          <div class="chips">
+            <span class="chip role">Shooting PD</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">Daytime</span><span class="chip genre">Factual Entertainment</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Scripting and shooting VTs for live show for event exhibitors, showcasing their work — produced six films.</li><li>Managing crew and logistics for shoots, including risk assessments.</li><li>Leading PSC to produce on-the-day VTs during the live broadcast — produced eight films in four days.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="shooting-pd edit-producer researcher"
+      data-genre="consumer documentary news"
+      data-text="X-Ray (BBC Wales) Shooting PD Jan – Mar 2023 Researching, scripting, shooting and edit producing consumer rights VTs, producing over 10 stories on the series. Shooting sequences and mentoring researcher during shoots and pre-production. Adhering to strict editorial policy whilst investigating consumer complaints to all companies. shooting-pd edit-producer researcher consumer documentary news">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">X-Ray (BBC Wales) — Shooting PD</div>
+          <div class="meta">Jan – Mar 2023</div>
+          <div class="chips">
+            <span class="chip role">Shooting PD</span><span class="chip role">Edit Producer</span><span class="chip role">Researcher</span>
+            <span class="chip genre">Consumer</span><span class="chip genre">Documentary</span><span class="chip genre">News</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Researching, scripting, shooting and edit producing consumer rights VTs, producing over 10 stories on the series.</li><li>Shooting sequences and mentoring researcher during shoots and pre-production.</li><li>Adhering to strict editorial policy whilst investigating consumer complaints to all companies.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor edit-producer"
+      data-genre="news social-media documentary"
+      data-text="CGTN Europe Broadcast Journalist / Social Media Producer Oct 2019 – Mar 2023 Mainly producing vertical content to grow Instagram page by repackaging agency and original content. Shoot, edit and report news packages for international TV audience and social media. Producing and directing original strands for digital platforms on international affairs. digital-producer video-editor edit-producer news social-media documentary">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">CGTN Europe — Broadcast Journalist / Social Media Producer</div>
+          <div class="meta">Oct 2019 – Mar 2023</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">News</span><span class="chip genre">Social Media</span><span class="chip genre">Documentary</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Mainly producing vertical content to grow Instagram page by repackaging agency and original content.</li><li>Shoot, edit and report news packages for international TV audience and social media.</li><li>Producing and directing original strands for digital platforms on international affairs.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="shooting-pd edit-producer"
+      data-genre="daytime factual-entertainment"
+      data-text="Morning Live (BBC Studios) Shooting PD Oct – Nov 2022 Full PD ownership of lifestyle VTs: master interviews, actuality, and talent management. shooting-pd edit-producer daytime factual-entertainment">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Morning Live (BBC Studios) — Shooting PD</div>
+          <div class="meta">Oct – Nov 2022</div>
+          <div class="chips">
+            <span class="chip role">Shooting PD</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">Daytime</span><span class="chip genre">Factual Entertainment</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Full PD ownership of lifestyle VTs: master interviews, actuality, and talent management.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="edit-producer researcher"
+      data-genre="news documentary"
+      data-text="Unapologetic (Channel 4) VT Producer Oct – Nov 2022 Research, script and edit produce insert VTs focussed on news for BAME communities — produced eight films. Oversee voiceover recordings with talent. Liaise, feedback and amend VTs from the channel’s commissioners and senior stakeholders. edit-producer researcher news documentary">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Unapologetic (Channel 4) — VT Producer</div>
+          <div class="meta">Oct – Nov 2022</div>
+          <div class="chips">
+            <span class="chip role">Edit Producer</span><span class="chip role">Researcher</span>
+            <span class="chip genre">News</span><span class="chip genre">Documentary</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Research, script and edit produce insert VTs focussed on news for BAME communities — produced eight films.</li><li>Oversee voiceover recordings with talent.</li><li>Liaise, feedback and amend VTs from the channel’s commissioners and senior stakeholders.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="shooting-pd"
+      data-genre="factual-entertainment daytime"
+      data-text="Bargain Brits By The Sea (Channel 5 / Zinc) Shooting PD Sep – Oct 2022 Story produce, shoot and direct multiple stories of holidaymakers across British seaside towns. Filming master interviews, directing actuality with emphasis on creating dramatic sequences. shooting-pd factual-entertainment daytime">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Bargain Brits By The Sea (Channel 5 / Zinc) — Shooting PD</div>
+          <div class="meta">Sep – Oct 2022</div>
+          <div class="chips">
+            <span class="chip role">Shooting PD</span>
+            <span class="chip genre">Factual Entertainment</span><span class="chip genre">Daytime</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Story produce, shoot and direct multiple stories of holidaymakers across British seaside towns.</li><li>Filming master interviews, directing actuality with emphasis on creating dramatic sequences.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="shooting-pd"
+      data-genre="reality factual-entertainment"
+      data-text="Come Dine With Me Professionals (Channel 4 / MultiStory) Shooting PD Aug – Sep 2022 Morning PD filming actuality sequences with contestants during meal preparations. Conducting actuality interviews to drive the narrative, building drama and comedy moments. shooting-pd reality factual-entertainment">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Come Dine With Me Professionals (Channel 4 / MultiStory) — Shooting PD</div>
+          <div class="meta">Aug – Sep 2022</div>
+          <div class="chips">
+            <span class="chip role">Shooting PD</span>
+            <span class="chip genre">Reality</span><span class="chip genre">Factual Entertainment</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Morning PD filming actuality sequences with contestants during meal preparations.</li><li>Conducting actuality interviews to drive the narrative, building drama and comedy moments.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="dv-director edit-producer"
+      data-genre="reality factual-entertainment"
+      data-text="Love Island: Aftersun (ITV2) DV Director May – Aug 2022 Working in Spain, producing a variety of VTs to support main show. Filming behind the scenes footage, constructing actuality VTs with contestants and comedy VTs with presenter. Filming and conducting master interviews with contributors at entry and eviction from villa, driving narrative and story arcs. dv-director edit-producer reality factual-entertainment">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Love Island: Aftersun (ITV2) — DV Director</div>
+          <div class="meta">May – Aug 2022</div>
+          <div class="chips">
+            <span class="chip role">DV Director</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">Reality</span><span class="chip genre">Factual Entertainment</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Working in Spain, producing a variety of VTs to support main show.</li><li>Filming behind the scenes footage, constructing actuality VTs with contestants and comedy VTs with presenter.</li><li>Filming and conducting master interviews with contributors at entry and eviction from villa, driving narrative and story arcs.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="shooting-pd"
+      data-genre="factual-entertainment daytime"
+      data-text="The Great House Giveaway (Channel 4 / Chwarel) Shooting PD Jul 2022 Filming house renovation actuality with contributors, driving narrative around difficulties of work. Shooting PTCs with presenter. shooting-pd factual-entertainment daytime">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">The Great House Giveaway (Channel 4 / Chwarel) — Shooting PD</div>
+          <div class="meta">Jul 2022</div>
+          <div class="chips">
+            <span class="chip role">Shooting PD</span>
+            <span class="chip genre">Factual Entertainment</span><span class="chip genre">Daytime</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Filming house renovation actuality with contributors, driving narrative around difficulties of work.</li><li>Shooting PTCs with presenter.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="edit-producer"
+      data-genre="sports news"
+      data-text="On Air Producer (Discovery Inc) On Air Producer Dec 2021 – Aug 2022 Working on Winter Olympics 2022 coverage and other general TV and live sports output. Producing live in gallery alongside TX — making editorial and compliance decisions to have smooth running of live international TV stations. Calculating rundowns of under/over runs to hit allocated broadcast schedules. edit-producer sports news">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">On Air Producer (Discovery Inc) — On Air Producer</div>
+          <div class="meta">Dec 2021 – Aug 2022</div>
+          <div class="chips">
+            <span class="chip role">Edit Producer</span>
+            <span class="chip genre">Sports</span><span class="chip genre">News</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Working on Winter Olympics 2022 coverage and other general TV and live sports output.</li><li>Producing live in gallery alongside TX — making editorial and compliance decisions to have smooth running of live international TV stations.</li><li>Calculating rundowns of under/over runs to hit allocated broadcast schedules.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="dv-director"
+      data-genre="blue-light documentary"
+      data-text="Night Coppers (Channel 4 / Blast! Films) DV Director Nov 2021 – Jan 2022 Working directly with police, following night patrols and capturing sensitive footage, ob-doc filming on prime lenses. Filming GVs of the city using prime lenses as well as rigging police cars with GoPros for action sequences. Filming with call centre staff, building relationships and driving story points from actuality sequences. dv-director blue-light documentary">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Night Coppers (Channel 4 / Blast! Films) — DV Director</div>
+          <div class="meta">Nov 2021 – Jan 2022</div>
+          <div class="chips">
+            <span class="chip role">DV Director</span>
+            <span class="chip genre">Blue Light</span><span class="chip genre">Documentary</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Working directly with police, following night patrols and capturing sensitive footage, ob-doc filming on prime lenses.</li><li>Filming GVs of the city using prime lenses as well as rigging police cars with GoPros for action sequences.</li><li>Filming with call centre staff, building relationships and driving story points from actuality sequences.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer edit-producer"
+      data-genre="documentary social-media"
+      data-text="Global Radio Senior Digital Producer Jul – Sep 2021 Lead producer overseeing shoot for video marketing campaign for Dog’s Trust charity. Scripting, directing and edit producing the film. Manage all logistics of shoot, from hiring crew, raising invoices and liaising with client to exceed expectations. digital-producer edit-producer documentary social-media">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Global Radio — Senior Digital Producer</div>
+          <div class="meta">Jul – Sep 2021</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">Documentary</span><span class="chip genre">Social Media</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Lead producer overseeing shoot for video marketing campaign for Dog’s Trust charity.</li><li>Scripting, directing and edit producing the film.</li><li>Manage all logistics of shoot, from hiring crew, raising invoices and liaising with client to exceed expectations.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor researcher edit-producer"
+      data-genre="children-s documentary social-media"
+      data-text="BBC Science Senior Digital Producer (Kids content) May – Jul 2021 Research, script, shoot and edit a series of Key Stage 2 educational videos. Video editing a series of science videos for BBC Earth Youtube and Facebook. Manage researcher to book location, cast talent and acquiring props. digital-producer video-editor researcher edit-producer children-s documentary social-media">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">BBC Science — Senior Digital Producer (Kids content)</div>
+          <div class="meta">May – Jul 2021</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span><span class="chip role">Researcher</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">Children&#x27;s</span><span class="chip genre">Documentary</span><span class="chip genre">Social Media</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Research, script, shoot and edit a series of Key Stage 2 educational videos.</li><li>Video editing a series of science videos for BBC Earth Youtube and Facebook.</li><li>Manage researcher to book location, cast talent and acquiring props.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="assistant-producer"
+      data-genre="daytime factual-entertainment"
+      data-text="Saturday Kitchen (Celebration Special) Producer Apr – May 2021 Consulted on Eid/Ramadan traditions; booked guests, wrote bios, supported studio/gallery production. assistant-producer daytime factual-entertainment">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Saturday Kitchen (Celebration Special) — Producer</div>
+          <div class="meta">Apr – May 2021</div>
+          <div class="chips">
+            <span class="chip role">Assistant Producer</span>
+            <span class="chip genre">Daytime</span><span class="chip genre">Factual Entertainment</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Consulted on Eid/Ramadan traditions; booked guests, wrote bios, supported studio/gallery production.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="assistant-producer edit-producer"
+      data-genre="sports factual-entertainment"
+      data-text="Football’s Funniest Moments Assistant Producer Mar – Apr 2021 Selected archive moments; supported casting; helped shape beats/music choices. assistant-producer edit-producer sports factual-entertainment">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Football’s Funniest Moments — Assistant Producer</div>
+          <div class="meta">Mar – Apr 2021</div>
+          <div class="chips">
+            <span class="chip role">Assistant Producer</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">Sports</span><span class="chip genre">Factual Entertainment</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Selected archive moments; supported casting; helped shape beats/music choices.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="shooting-pd edit-producer researcher"
+      data-genre="blue-light documentary"
+      data-text="Crimewatch Roadshow (BBC Studios) Shooting PD Apr – Jun 2018; Feb – Mar 2021 Scripting, shooting and edit producing sensitive crime reconstruction films — produced 15 films. Managing small team of researcher and runner, supporting artists, police and case studies. shooting-pd edit-producer researcher blue-light documentary">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Crimewatch Roadshow (BBC Studios) — Shooting PD</div>
+          <div class="meta">Apr – Jun 2018; Feb – Mar 2021</div>
+          <div class="chips">
+            <span class="chip role">Shooting PD</span><span class="chip role">Edit Producer</span><span class="chip role">Researcher</span>
+            <span class="chip genre">Blue Light</span><span class="chip genre">Documentary</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Scripting, shooting and edit producing sensitive crime reconstruction films — produced 15 films.</li><li>Managing small team of researcher and runner, supporting artists, police and case studies.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="edit-producer video-editor"
+      data-genre="sports factual-entertainment"
+      data-text="Football Focus (BBC One) VT Producer Oct 2020 – Oct 2021 Produced creative VT inserts/compilations; edit-produced; cleared archive and music. edit-producer video-editor sports factual-entertainment">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Football Focus (BBC One) — VT Producer</div>
+          <div class="meta">Oct 2020 – Oct 2021</div>
+          <div class="chips">
+            <span class="chip role">Edit Producer</span><span class="chip role">Video Editor</span>
+            <span class="chip genre">Sports</span><span class="chip genre">Factual Entertainment</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Produced creative VT inserts/compilations; edit-produced; cleared archive and music.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="video-editor edit-producer"
+      data-genre="documentary"
+      data-text="Uplands TV (Alternative History) (FTC) Video Editor / Producer Feb – Mar 2019 Produce and edit medium form documentaries for TX on BBC iPlayer and YouTube. Craft editing using archive to narrate impactful history films about British history. video-editor edit-producer documentary">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Uplands TV (Alternative History) (FTC) — Video Editor / Producer</div>
+          <div class="meta">Feb – Mar 2019</div>
+          <div class="chips">
+            <span class="chip role">Video Editor</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">Documentary</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Produce and edit medium form documentaries for TX on BBC iPlayer and YouTube.</li><li>Craft editing using archive to narrate impactful history films about British history.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="shooting-pd edit-producer researcher"
+      data-genre="daytime factual-entertainment news"
+      data-text="This Morning (ITV) Shooting PD Oct 2018 – Apr 2020 Produced over 100 VTs for the show, from shooting and editing to Live OBs and repackaging archive. Created strands with regular and new presenters — working on partnership branded films. Produced makeover, entertainment, current affairs, animal and light-hearted films over 18 months. Pitched, researched, edit and edit produce location VTs and studio items. Developed excellent talent and stakeholder management. shooting-pd edit-producer researcher daytime factual-entertainment news">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">This Morning (ITV) — Shooting PD</div>
+          <div class="meta">Oct 2018 – Apr 2020</div>
+          <div class="chips">
+            <span class="chip role">Shooting PD</span><span class="chip role">Edit Producer</span><span class="chip role">Researcher</span>
+            <span class="chip genre">Daytime</span><span class="chip genre">Factual Entertainment</span><span class="chip genre">News</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Produced over 100 VTs for the show, from shooting and editing to Live OBs and repackaging archive.</li><li>Created strands with regular and new presenters — working on partnership branded films.</li><li>Produced makeover, entertainment, current affairs, animal and light-hearted films over 18 months.</li><li>Pitched, researched, edit and edit produce location VTs and studio items.</li><li>Developed excellent talent and stakeholder management.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor"
+      data-genre="social-media news"
+      data-text="BBC Wales Digital Producer / Video Editor Jul – Oct 2018 Craft edit segments from TV shows for social media to support marketing campaigns. Liaise with channel commissioners to meet briefs and make amends to social videos. digital-producer video-editor social-media news">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">BBC Wales — Digital Producer / Video Editor</div>
+          <div class="meta">Jul – Oct 2018</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span>
+            <span class="chip genre">Social Media</span><span class="chip genre">News</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Craft edit segments from TV shows for social media to support marketing campaigns.</li><li>Liaise with channel commissioners to meet briefs and make amends to social videos.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="video-editor digital-producer"
+      data-genre="social-media factual-entertainment"
+      data-text="BBC Comedy Social Media Video Editor Feb – Dec 2018 Editing comedy style videos to support marketing campaign on TV comedy shows. Script, shoot and work directly with comedians on producing original comedy content for social channels. video-editor digital-producer social-media factual-entertainment">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">BBC Comedy — Social Media Video Editor</div>
+          <div class="meta">Feb – Dec 2018</div>
+          <div class="chips">
+            <span class="chip role">Video Editor</span><span class="chip role">Digital Producer</span>
+            <span class="chip genre">Social Media</span><span class="chip genre">Factual Entertainment</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Editing comedy style videos to support marketing campaign on TV comedy shows.</li><li>Script, shoot and work directly with comedians on producing original comedy content for social channels.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="dv-director"
+      data-genre="blue-light documentary"
+      data-text="Trucking Hell (Crackit Production) DV Director Jan – Feb 2018 Ob-doc filming of HGV recoveries in high-risk roadside environments. dv-director blue-light documentary">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Trucking Hell (Crackit Production) — DV Director</div>
+          <div class="meta">Jan – Feb 2018</div>
+          <div class="chips">
+            <span class="chip role">DV Director</span>
+            <span class="chip genre">Blue Light</span><span class="chip genre">Documentary</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Ob-doc filming of HGV recoveries in high-risk roadside environments.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor"
+      data-genre="news sports"
+      data-text="Associated Press (SNTV/IMG) Digital Producer Sep 2017 – May 2018 Edited breaking global news and sports packages. Scripted, voiced and subtitled videos under tight deadlines. digital-producer video-editor news sports">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Associated Press (SNTV/IMG) — Digital Producer</div>
+          <div class="meta">Sep 2017 – May 2018</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span>
+            <span class="chip genre">News</span><span class="chip genre">Sports</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Edited breaking global news and sports packages.</li><li>Scripted, voiced and subtitled videos under tight deadlines.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor edit-producer"
+      data-genre="social-media factual-entertainment"
+      data-text="BBC Dragons’ Den (BBC Studios) Social Media Producer Apr – Aug 2017 Solo working to produce strands of social content to aid the marketing of new series across social media. Originate ideas and film during busy schedules and capturing behind-the-scenes content. Editing and setting the blueprint for the style of videos across Facebook and Instagram. Shoot and edit produce medium form documentary for BBC iPlayer. digital-producer video-editor edit-producer social-media factual-entertainment">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">BBC Dragons’ Den (BBC Studios) — Social Media Producer</div>
+          <div class="meta">Apr – Aug 2017</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">Social Media</span><span class="chip genre">Factual Entertainment</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Solo working to produce strands of social content to aid the marketing of new series across social media.</li><li>Originate ideas and film during busy schedules and capturing behind-the-scenes content.</li><li>Editing and setting the blueprint for the style of videos across Facebook and Instagram.</li><li>Shoot and edit produce medium form documentary for BBC iPlayer.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor"
+      data-genre="news social-media"
+      data-text="BBC 5Live Politics Social Media Producer Sep 2016 – May 2017 Live cut show and post to Twitter / X to maximise show reach, audience engagement and generate stories from politicians being interviewed. Edit interviews for social-first content using graphics, sound mixing and archive to add creativity. digital-producer video-editor news social-media">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">BBC 5Live Politics — Social Media Producer</div>
+          <div class="meta">Sep 2016 – May 2017</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span>
+            <span class="chip genre">News</span><span class="chip genre">Social Media</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Live cut show and post to Twitter / X to maximise show reach, audience engagement and generate stories from politicians being interviewed.</li><li>Edit interviews for social-first content using graphics, sound mixing and archive to add creativity.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor researcher"
+      data-genre="news social-media"
+      data-text="BBC News Broadcast Journalist / Digital Producer Jun 2016 – Feb 2017 Producing social packages for BBC website and Facebook. UGC verification with strong emphasis on fact checking. Launched BBC News Facebook Live operations to audience of over 50 million followers. digital-producer video-editor researcher news social-media">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">BBC News — Broadcast Journalist / Digital Producer</div>
+          <div class="meta">Jun 2016 – Feb 2017</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span><span class="chip role">Researcher</span>
+            <span class="chip genre">News</span><span class="chip genre">Social Media</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Producing social packages for BBC website and Facebook.</li><li>UGC verification with strong emphasis on fact checking.</li><li>Launched BBC News Facebook Live operations to audience of over 50 million followers.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor"
+      data-genre="sports social-media"
+      data-text="Fremantle Media Digital Producer Jan 2015 – Jan 2016 Create football fan content to grow YouTube channels to attract advertisers and maximise revenue. Created branded partnership content, directly communicating with client. Scripting, shooting and editing YouTube comedy sketches, infotainment and reactions videos. digital-producer video-editor sports social-media">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Fremantle Media — Digital Producer</div>
+          <div class="meta">Jan 2015 – Jan 2016</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span>
+            <span class="chip genre">Sports</span><span class="chip genre">Social Media</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Create football fan content to grow YouTube channels to attract advertisers and maximise revenue.</li><li>Created branded partnership content, directly communicating with client.</li><li>Scripting, shooting and editing YouTube comedy sketches, infotainment and reactions videos.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="digital-producer video-editor"
+      data-genre="news social-media"
+      data-text="Mirror Online Digital Producer Jan – Dec 2015 Edited breaking news with SEO headlines; cleared and curated viral/UGC content. digital-producer video-editor news social-media">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Mirror Online — Digital Producer</div>
+          <div class="meta">Jan – Dec 2015</div>
+          <div class="chips">
+            <span class="chip role">Digital Producer</span><span class="chip role">Video Editor</span>
+            <span class="chip genre">News</span><span class="chip genre">Social Media</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Edited breaking news with SEO headlines; cleared and curated viral/UGC content.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="video-editor digital-producer researcher"
+      data-genre="news daytime"
+      data-text="London Live Video/Production Journalist Jul 2014 – Jan 2015 Wrote presenter bulletins; live-cut overlays during TX; edited short news packages for web. Researched, pitched, shot and edited lifestyle VTs for arts and entertainment show. Worked in gallery outputting show using ENPS. Wrote supporting articles for London Evening Standard for features. Scripted bulletins for live and pre recorded news bulletins. Sourced guests and wrote briefs for live news debates. video-editor digital-producer researcher news daytime">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">London Live — Video/Production Journalist</div>
+          <div class="meta">Jul 2014 – Jan 2015</div>
+          <div class="chips">
+            <span class="chip role">Video Editor</span><span class="chip role">Digital Producer</span><span class="chip role">Researcher</span>
+            <span class="chip genre">News</span><span class="chip genre">Daytime</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Wrote presenter bulletins; live-cut overlays during TX; edited short news packages for web.</li><li>Researched, pitched, shot and edited lifestyle VTs for arts and entertainment show.</li><li>Worked in gallery outputting show using ENPS.</li><li>Wrote supporting articles for London Evening Standard for features.</li><li>Scripted bulletins for live and pre recorded news bulletins.</li><li>Sourced guests and wrote briefs for live news debates.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="assistant-producer video-editor"
+      data-genre="news sports"
+      data-text="Sky News / Sky Sports News Junior Producer Jul 2013 – Jan 2014 Writing sports bullets and editing video content for news and online broadcast. Compiling short match highlights across Premier League and Championship for news reports. assistant-producer video-editor news sports">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">Sky News / Sky Sports News — Junior Producer</div>
+          <div class="meta">Jul 2013 – Jan 2014</div>
+          <div class="chips">
+            <span class="chip role">Assistant Producer</span><span class="chip role">Video Editor</span>
+            <span class="chip genre">News</span><span class="chip genre">Sports</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Writing sports bullets and editing video content for news and online broadcast.</li><li>Compiling short match highlights across Premier League and Championship for news reports.</li>
+        </ul>
+      </div>
+    </article>
+    
+
+    <article class="jobcard reveal jobitem"
+      data-role="researcher video-editor edit-producer"
+      data-genre="news documentary"
+      data-text="London360 &amp; UK 360 (Media Trust/Community Channel) VT Producer / Journalist Early career credit Researched, pitched and shot and presented VTs showcasing underrepresented communities across the UK. Creating videos to support smaller charities — telling impactful case study stories. Produced VTs for live homelessness campaign by the Media Trust. Participated in debates and wrote opinion columns for partner radio station and newspaper. researcher video-editor edit-producer news documentary">
+      <div class="jobhead">
+        <div class="node" aria-hidden="true"></div>
+        <div class="jobheadtext">
+          <div class="jobtitle">London360 &amp; UK 360 (Media Trust/Community Channel) — VT Producer / Journalist</div>
+          <div class="meta">Early career credit</div>
+          <div class="chips">
+            <span class="chip role">Researcher</span><span class="chip role">Video Editor</span><span class="chip role">Edit Producer</span>
+            <span class="chip genre">News</span><span class="chip genre">Documentary</span>
+          </div>
+        </div>
+      </div>
+      <div class="jobbody">
+        <ul>
+          <li>Researched, pitched and shot and presented VTs showcasing underrepresented communities across the UK.</li><li>Creating videos to support smaller charities — telling impactful case study stories.</li><li>Produced VTs for live homelessness campaign by the Media Trust.</li><li>Participated in debates and wrote opinion columns for partner radio station and newspaper.</li>
+        </ul>
+      </div>
+    </article>
+    
+      </div>
+    </section>
+
+    <footer class="reveal">
+      <div class="mini">Total roles listed: 39. Single-file HTML — host anywhere.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Keyboard helpers
+    const q = document.getElementById('q');
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '/' && document.activeElement !== q) {
+        e.preventDefault(); q.focus();
+      }
+      if (e.key === 'Escape' && document.activeElement === q) {
+        q.value = ''; q.blur(); applyFilters();
+      }
+    });
+
+    // Data
+    const ROLE_ORDER = ['shooting-pd', 'dv-director', 'video-editor', 'digital-producer', 'assistant-producer', 'edit-producer', 'researcher', 'other'];
+    const ROLE_LABEL = {"shooting-pd":"Shooting PD","dv-director":"DV Director","video-editor":"Video Editor","digital-producer":"Digital Producer","assistant-producer":"Assistant Producer","edit-producer":"Edit Producer","researcher":"Researcher","other":"Other"};
+
+    const GENRE_ORDER = ['news', 'sports', 'factual-entertainment', 'documentary', 'reality', 'daytime', 'consumer', 'blue-light', 'children-s', 'social-media', 'other'];
+    const GENRE_LABEL = {"news":"News","sports":"Sports","factual-entertainment":"Factual Entertainment","documentary":"Documentary","reality":"Reality","daytime":"Daytime","consumer":"Consumer","blue-light":"Blue Light","children-s":"Children's","social-media":"Social Media","other":"Other"};
+
+    const jobs = Array.from(document.querySelectorAll('.jobitem'));
+    const titles = Array.from(new Set(jobs.map(j => j.dataset.title))).sort((a,b)=>a.localeCompare(b));
+
+    let activeRole = 'all';
+        let activeGenre = 'all';
+
+    function mkTab(container, label, value, kind, isAlt=false, isTer=false) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'tab' + (isAlt ? ' alt' : '') + (isTer ? ' ter' : '');
+      btn.textContent = label;
+      btn.dataset.kind = kind;
+      btn.dataset.value = value;
+      btn.addEventListener('click', () => {
+        // set active
+        container.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        if (kind === 'role') activeRole = value;
+        if (kind === 'genre') activeGenre = value;
+        applyFilters();
+      });
+      container.appendChild(btn);
+      return btn;
+    }
+
+    // Build Role tabs (fixed list; shows even if 0 matches)
+    const roleTabs = document.getElementById('roleTabs');
+    const roleAll = mkTab(roleTabs, 'All roles', 'all', 'role');
+    roleAll.classList.add('active');
+    ROLE_ORDER.forEach(r => {
+      if (r === 'other') return;
+      mkTab(roleTabs, ROLE_LABEL[r] || r, r, 'role');
+    });
+    mkTab(roleTabs, 'Other', 'other', 'role');
+
+    // Build Genre tabs (fixed list)
+    const genreTabs = document.getElementById('genreTabs');
+    const genreAll = mkTab(genreTabs, 'All genres', 'all', 'genre', false, true);
+    genreAll.classList.add('active');
+    GENRE_ORDER.forEach(g => {
+      if (g === 'other') return;
+      mkTab(genreTabs, GENRE_LABEL[g] || g, g, 'genre', false, true);
+    });
+    mkTab(genreTabs, 'Other', 'other', 'genre', false, true);
+
+    function applyFilters() {
+      const term = (q.value || '').trim().toLowerCase();
+      let shown = 0;
+
+      for (const j of jobs) {
+        const text = (j.dataset.text || '').toLowerCase();
+        const roles = (j.dataset.role || 'other').toLowerCase().split(/\s+/);
+        const genres = (j.dataset.genre || 'other').toLowerCase().split(/\s+/);
+
+        const matchTerm = !term || text.includes(term);
+        const matchRole = (activeRole === 'all') || roles.includes(activeRole);
+        const matchGenre = (activeGenre === 'all') || genres.includes(activeGenre);
+
+        const match = matchTerm && matchRole && matchGenre;
+        j.style.display = match ? '' : 'none';
+        if (match) shown++;
+      }
+
+      let empty = document.getElementById('empty');
+      if (!shown) {
+        if (!empty) {
+          empty = document.createElement('div');
+          empty.id = 'empty';
+          empty.className = 'card';
+          empty.style.marginTop = '12px';
+          empty.innerHTML = `<h2>No matches</h2>
+            <p>Try clearing a tab filter or searching broader (e.g. <span class="mini">BBC</span>, <span class="mini">DV Director</span>, <span class="mini">news</span>, <span class="mini">sports</span>).</p>`;
+          document.getElementById('timeline').appendChild(empty);
+        }
+      } else if (empty) {
+        empty.remove();
+      }
+    }
+
+    q.addEventListener('input', applyFilters);
+  </script>
+</body>
+</html>
